@@ -4,25 +4,26 @@ namespace CSharpExercises{
     public class DataTypeExercises{
         public void ValueSum(){
             Console.WriteLine("Ingrese un valor a sumar:");
-            var firstValue = Console.ReadLine();
+            string firstValue = Console.ReadLine();
+
             Console.WriteLine("Ingrese otro valor a sumar:");
-            var secondValue = Console.ReadLine();
-            int first=0;
-            int second=0;
-            bool firstNumber = Int32.TryParse (firstValue, out first );
-            bool secondNumber = Int32.TryParse (secondValue, out second );
-            
-                if(firstNumber && secondNumber){
+            string secondValue = Console.ReadLine();
+
+
+            int first = 0;
+            bool couldParseFirst = Int32.TryParse(firstValue, out first);
+            if(couldParseFirst){
+                int second = 0;
+                bool couldParseSecond = Int32.TryParse(secondValue, out second);
+
+                if(couldParseSecond){
                     Console.WriteLine("El resultado de la suma es: {0}", first + second);
+                }else{
+                    Console.WriteLine("El segundo parámetro está mal formateado");    
+                }
+            }else{
+                Console.WriteLine("El primer parámetro está mal formateado");
             }
-            else if (firstNumber){
-                Console.WriteLine("El primer parametro no es entero");
-            }
-            else if (secondNumber) {
-                Console.WriteLine("El segundo parametro no es entero");
-            }
-           
-            
         }
     }
 }
